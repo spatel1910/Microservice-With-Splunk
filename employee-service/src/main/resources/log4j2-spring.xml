@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+      <Appenders>
+          <Console name="console" target="SYSTEM_OUT">
+          </Console>
+        <SplunkHttp name="employee-service"
+                    url="http://localhost:8088"
+                    token="df197a41-1b4d-43df-b9ef-a3bbc96ba8a2"
+                    host="localhost"
+                    index="employee_service"
+                    type="raw"
+                    source="employee-service-log"
+                    sourcetype="log4j"
+                    messageFormat="text"
+                    disableCertificateValidation="true">
+            <PatternLayout pattern="%m"/>
+        </SplunkHttp>
+    </Appenders>
+
+        <Loggers>
+            <Root level="info">
+                <AppenderRef ref="console" />
+                <AppenderRef ref="employee-service" />
+            </Root>
+        </Loggers>
+
+
+</Configuration>
